@@ -3,11 +3,11 @@
 ## Description
 GWT Abstract services for RPC-Servlet and RequestFactory
 
-## Exported packages
+## OSGi Exported packages
 * org.liveSense.service.gwt(1.0.0.SNAPSHOT)
 * org.liveSense.service.gwt.exceptions(1.0.0.SNAPSHOT)
 
-## Dependencies
+## OSGi Dependencies
 * __System Bundle - org.apache.felix.framework (3.0.8)__
 	* org.osgi.framework
 	* org.osgi.service.packageadmin
@@ -23,11 +23,11 @@ GWT Abstract services for RPC-Servlet and RequestFactory
 * __Apache Felix Http Jetty - org.apache.felix.http.jetty (2.2.0)__
 	* javax.servlet
 	* javax.servlet.http
-* __[liveSense :: Core - org.liveSense.core](http://github.com/liveSense/org.liveSense.core) (1.0.1.SNAPSHOT)__
+* __[liveSense :: Core - org.liveSense.core (2-SNAPSHOT)](http://github.com/liveSense/org.liveSense.core)__
 	* org.liveSense.core
 	* org.liveSense.core.service
 	* org.liveSense.core.wrapper
-* __[liveSense :: Framework :: GWT framework - org.liveSense.framework.gwt](http://github.com/liveSense/org.liveSense.framework.gwt) (2.4.0.1-SNAPSHOT)__
+* __[liveSense :: Framework :: GWT framework - org.liveSense.framework.gwt (2-SNAPSHOT)](http://github.com/liveSense/org.liveSense.framework.gwt)__
 	* com.google.gwt.user.client.rpc
 	* com.google.gwt.user.server.rpc
 	* com.google.web.bindery.autobean.shared
@@ -38,7 +38,7 @@ GWT Abstract services for RPC-Servlet and RequestFactory
 * __slf4j-api - slf4j.api (1.6.1)__
 	* org.slf4j
 
-## Embedded JARs
+## OSGi Embedded JARs
 
 ## Dependency Graph
-![alt text](http://raw.github.com.everydayimmirror.in/liveSense/org.liveSense.service.gwt/master/diagram.svg "")
+![alt text](http://raw.github.com.everydayimmirror.in/liveSense/org.liveSense.service.gwt/master/osgidependencies.svg "")
