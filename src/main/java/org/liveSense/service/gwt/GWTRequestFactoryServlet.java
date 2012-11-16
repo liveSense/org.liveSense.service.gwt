@@ -44,6 +44,7 @@ import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.auth.core.AuthenticationSupport;
 import org.apache.sling.auth.core.spi.AuthenticationInfo;
 import org.apache.sling.jcr.api.SlingRepository;
+import org.liveSense.core.ClassInstanceCache;
 import org.liveSense.core.CompositeClassLoader;
 import org.liveSense.core.Configurator;
 import org.liveSense.core.service.OSGIClassLoaderManager;
@@ -65,6 +66,7 @@ import com.google.web.bindery.requestfactory.server.ServiceLayer;
 import com.google.web.bindery.requestfactory.server.SimpleRequestProcessor;
 import com.google.web.bindery.requestfactory.shared.RequestFactory;
 import com.google.web.bindery.requestfactory.shared.ServerFailure;
+import com.google.web.bindery.requestfactory.shared.ServiceLocator;
 import com.google.web.bindery.requestfactory.shared.messages.MessageFactory;
 import com.google.web.bindery.requestfactory.shared.messages.ResponseMessage;
 import com.google.web.bindery.requestfactory.shared.messages.ServerFailureMessage;
@@ -121,8 +123,12 @@ public abstract class GWTRequestFactoryServlet extends HttpServlet {
 	@Reference
 	protected OSGIClassLoaderManager dynamicClassLoaderManager;
 
+	@Reference 
+	ServiceLocator serviceLocator;
 
-	
+	@Reference 
+	ClassInstanceCache instanceCache;
+
 	private static final String JSON_CHARSET = "UTF-8";
 	private static final String JSON_CONTENT_TYPE = "application/json";
 	
@@ -194,7 +200,7 @@ public abstract class GWTRequestFactoryServlet extends HttpServlet {
 		getDefaultExceptionHandler().setRequestFactoryServlet(this);
 		ClassLoader old = Thread.currentThread().getContextClassLoader();
 		Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader());
-		processor = new SimpleRequestProcessor(ServiceLayer.create(new OsgiServiceLayerDecorator(dynamicClassLoaderManager.getPackageAdminClassLoader(null))));
+		processor = new SimpleRequestProcessor(ServiceLayer.create(new OsgiServiceLayerDecorator(dynamicClassLoaderManager.getPackageAdminClassLoader(null), serviceLocator, instanceCache)));
 		processor.setExceptionHandler(getDefaultExceptionHandler());
 		Thread.currentThread().setContextClassLoader(old);
 	}
