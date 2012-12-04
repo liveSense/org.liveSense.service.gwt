@@ -41,6 +41,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Reference;
+import org.apache.felix.scr.annotations.ReferenceCardinality;
+import org.apache.felix.scr.annotations.ReferencePolicy;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
@@ -125,19 +127,19 @@ public abstract class GWTRPCServlet extends RemoteServiceServlet {
 
 	private String rootPath = "";
 	
-	@Reference
+	@Reference(cardinality=ReferenceCardinality.MANDATORY_UNARY, policy=ReferencePolicy.DYNAMIC)
 	private Configurator config;
 	
-	@Reference
+	@Reference(cardinality=ReferenceCardinality.MANDATORY_UNARY, policy=ReferencePolicy.DYNAMIC)
 	SlingRepository repository;
 
-	@Reference
+	@Reference(cardinality=ReferenceCardinality.MANDATORY_UNARY, policy=ReferencePolicy.DYNAMIC)
 	PackageAdmin packageAdmin;
 	
-	@Reference
+	@Reference(cardinality=ReferenceCardinality.MANDATORY_UNARY, policy=ReferencePolicy.DYNAMIC)
 	AuthenticationSupport auth;
 	
-	@Reference
+	@Reference(cardinality=ReferenceCardinality.MANDATORY_UNARY, policy=ReferencePolicy.DYNAMIC)
 	ResourceResolverFactory resourceResolverFactory;
 	
 	public ClassLoader getClassLoaderByBundle(String name) throws ClassNotFoundException {

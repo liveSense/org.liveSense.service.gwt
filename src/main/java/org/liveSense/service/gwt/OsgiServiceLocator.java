@@ -4,6 +4,8 @@ import org.apache.felix.scr.annotations.Activate;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Deactivate;
 import org.apache.felix.scr.annotations.Reference;
+import org.apache.felix.scr.annotations.ReferenceCardinality;
+import org.apache.felix.scr.annotations.ReferencePolicy;
 import org.apache.felix.scr.annotations.Service;
 import org.liveSense.core.ClassInstanceCache;
 import org.liveSense.core.ClassInstanceCacheImpl;
@@ -19,7 +21,7 @@ public class OsgiServiceLocator implements ServiceLocator {
 
 	static Logger log = LoggerFactory.getLogger(OsgiServiceLocator.class);
 		
-	@Reference
+	@Reference(cardinality=ReferenceCardinality.MANDATORY_UNARY, policy=ReferencePolicy.DYNAMIC)
 	ClassInstanceCache instanceCache = ClassInstanceCacheImpl.INSTANCE;
 	
 	public static OsgiServiceLocator INSTANCE = new OsgiServiceLocator();
