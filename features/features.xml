@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><features name="liveSense-${liveSense.version}-service-gwt" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
+	<feature name="liveSense-service-gwt" version="${liveSense.service.gwt.version}" description="liveSense service gwt">
+		<feature>liveSense-core-base</feature>
+		<feature>liveSense-framework-gwt</feature>
+        <bundle>mvn:com.github.livesense/org.liveSense.service.gwt/${liveSense.service.gwt.version}</bundle>
+	</feature>
+</features>

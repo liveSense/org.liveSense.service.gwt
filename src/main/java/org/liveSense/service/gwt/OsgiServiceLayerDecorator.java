@@ -82,4 +82,8 @@ public class OsgiServiceLayerDecorator extends ServiceLayerDecorator {
 		return (T) instanceCache.getInstance(clazz);
 	}
 
+	 @Override
+	public boolean isLive(Object domainObject) {
+		return true;
+	 }
 }
