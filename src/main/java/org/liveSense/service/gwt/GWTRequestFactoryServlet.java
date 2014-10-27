@@ -20,44 +20,6 @@ package org.liveSense.service.gwt;
  * @author Robert Csakany (robson@semmi.se)
  * @created Jan 04, 2011
  */
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.MessageFormat;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.ResourceBundle;
-
-import javax.jcr.LoginException;
-import javax.jcr.Repository;
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
-import javax.jcr.SimpleCredentials;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.felix.scr.annotations.Component;
-import org.apache.felix.scr.annotations.Reference;
-import org.apache.felix.scr.annotations.ReferenceCardinality;
-import org.apache.felix.scr.annotations.ReferencePolicy;
-import org.apache.sling.api.resource.ResourceResolverFactory;
-import org.apache.sling.auth.core.AuthenticationSupport;
-import org.apache.sling.auth.core.spi.AuthenticationInfo;
-import org.apache.sling.jcr.api.SlingRepository;
-import org.liveSense.core.ClassInstanceCache;
-import org.liveSense.core.CompositeClassLoader;
-import org.liveSense.core.Configurator;
-import org.liveSense.core.service.OSGIClassLoaderManager;
-import org.liveSense.core.wrapper.RequestWrapper;
-import org.liveSense.service.gwt.exceptions.AccessDeniedException;
-import org.liveSense.service.gwt.exceptions.InternalException;
-import org.osgi.framework.Bundle;
-import org.osgi.service.packageadmin.PackageAdmin;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.google.gwt.user.server.rpc.RPCServletUtils;
 import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanCodex;
@@ -72,6 +34,38 @@ import com.google.web.bindery.requestfactory.shared.ServiceLocator;
 import com.google.web.bindery.requestfactory.shared.messages.MessageFactory;
 import com.google.web.bindery.requestfactory.shared.messages.ResponseMessage;
 import com.google.web.bindery.requestfactory.shared.messages.ServerFailureMessage;
+import org.apache.felix.scr.annotations.Component;
+import org.apache.felix.scr.annotations.Reference;
+import org.apache.felix.scr.annotations.ReferenceCardinality;
+import org.apache.felix.scr.annotations.ReferencePolicy;
+import org.apache.sling.api.resource.ResourceResolverFactory;
+import org.apache.sling.auth.core.AuthenticationSupport;
+import org.apache.sling.auth.core.spi.AuthenticationInfo;
+import org.apache.sling.jcr.api.SlingRepository;
+import org.liveSense.core.ClassInstanceCache;
+import org.liveSense.core.CompositeClassLoader;
+import org.liveSense.core.Configurator;
+import org.liveSense.core.service.OSGIClassLoaderManager;
+import org.liveSense.misc.jcrWrapper.RequestWrapper;
+import org.liveSense.service.gwt.exceptions.AccessDeniedException;
+import org.liveSense.service.gwt.exceptions.InternalException;
+import org.osgi.framework.Bundle;
+import org.osgi.service.packageadmin.PackageAdmin;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.jcr.*;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.MessageFormat;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  * Extending google's request factory servlet

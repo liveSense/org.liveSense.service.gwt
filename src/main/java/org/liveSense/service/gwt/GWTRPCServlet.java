@@ -53,7 +53,7 @@ import org.apache.sling.jcr.resource.JcrResourceConstants;
 import org.liveSense.core.BundleProxyClassLoader;
 import org.liveSense.core.CompositeClassLoader;
 import org.liveSense.core.Configurator;
-import org.liveSense.core.wrapper.RequestWrapper;
+import org.liveSense.misc.jcrWrapper.RequestWrapper;
 import org.liveSense.service.gwt.exceptions.AccessDeniedException;
 import org.liveSense.service.gwt.exceptions.InternalException;
 import org.osgi.framework.Bundle;

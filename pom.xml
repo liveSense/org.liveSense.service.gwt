@@ -87,6 +87,12 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<groupId>com.github.livesense</groupId>
+			<artifactId>org.liveSense.misc.jcrWrapper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
 			<groupId>javax.jcr</groupId>
 			<artifactId>jcr</artifactId>
 			<scope>provided</scope>
